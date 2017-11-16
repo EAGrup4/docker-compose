@@ -7,7 +7,7 @@ services:
   ports:
    - "27017:27017"
 
- api:
+ server:
   build: ../OpinaliaServer/
   command: node app.js
   volumes:
@@ -17,10 +17,12 @@ services:
   links:
    - mongo
 
- api:
+ client:
   build: ../OpinaliaClient/
   command: npm start
   volumes:
    - ../OpinaliaClient:/Client
   ports:
    - "4200:4200"
+   links:
+   - mongo
