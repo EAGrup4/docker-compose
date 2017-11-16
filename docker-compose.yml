@@ -1,0 +1,26 @@
+version: '3'
+services:
+ mongo:
+  image: mongo
+  volumes:
+   - /data/mongodb/db:/data/db
+  ports:
+   - "27017:27017"
+
+ api:
+  build: ../OpinaliaServer/
+  command: node app.js
+  volumes:
+   - ../OpinaliaServer:/Server
+  ports:
+   - "3000:3000"
+  links:
+   - mongo
+
+ api:
+  build: ../OpinaliaClient/
+  command: npm start
+  volumes:
+   - ../OpinaliaClient:/Client
+  ports:
+   - "4200:4200"
