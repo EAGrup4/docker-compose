@@ -10,8 +10,6 @@ services:
  server:
   build: ../OpinaliaServer/
   command: node app.js
-  volumes:
-   - ../OpinaliaServer:/Server
   ports:
    - "3000:3000"
   links:
@@ -20,8 +18,6 @@ services:
  client:
   build: ../OpinaliaClient/
   command: npm start
-  volumes:
-   - ../OpinaliaClient:/Client
   ports:
    - "4200:4200"
   links:
